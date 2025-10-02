@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together We Heal - Mental Wellness Community</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #5d8aa8;
+            --secondary: #a8c6db;
+            --accent: #ffb6c1;
+            --light: #f5f9fc;
+            --dark: #2c3e50;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+        body {
+            background-color: rgb(102, 255, 0);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        a {
+            text-align: none;
+            color: var(--primary);
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--dark);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+
+
+        }
+        .btn {
+            display: inline-block;
+            background-color: blue;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+
+        }
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(2px);
+
+        }
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* Header Styles*/
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: blue;
+            margin-left: 200px;
+            text-decoration: underline;
+            background-color: black;
+
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav li {
+            margin-left: 25px;
+        }
+        nav a {
+            font-weight: 500;
+        }
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--light) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--dark);
+        }
+        /* Feature section*/
+        .features {
+            padding: 80px 0;
+
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Community Section*/
+        .community {
+            background-color: var(--secondary);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .community h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        .community p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        /*Testimonials*/
+        .testimonials {
+            padding: 80px 0;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: """";
+            font-size: 5rem;
+            color: var(--secondary);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        
+            
+        }
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        /*join section*/
+        .join {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .join h2 {
+            margin-bottom: 20px;
+        }
+        .join p {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .join-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+    
+        }
+        /*resources section*/
+        .resources {
+            padding: 80px 0;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .resource-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .resource-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        /*footer*/
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-area: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ccc;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        /*responsive design*/
+        @media (max-width: 768px) {
+            nav {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+            }
+            nav.active {
+                max-height: 500px;
+            }
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+            nav li {
+                margin: 10px 0;
+            }
+            }
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+
+    
+    </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="container header-container">
+            <div class="logo">InfinityHealth</div>
+            <div class="mobile-menu">&#9776;</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#join">Join Us</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!--Hero Section-->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>You Are Not Alone In Your Journey</h1>
+            <p>A safe, supportive community for those dealing with depression, anxiety, loneliness and trauma. Share your story, find understanding, and heal together.</p>
+            <a href="#join" class="btn">Join Our Community</a>
+        </div>
+
+    </section>
+    <!--Features Section-->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Our Community Helps</h2>
+                <p>We provide multiple ways to connect, share, and support each other through difficult times.</p>
+
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128172;</div>
+                    <h3>Safe Discussions</h3>
+                    <p>Participate in moderated group discussions where you can share expressions without judgement.</p>
+
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128101;</div>
+                    <h3>Peer Support</h3>
+                    <p>Connect with others who understand what you are going through and can offer genuine emparthy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128221;</div>
+                    <h3>Share Your Story</h3>
+                    <p>Express yourself through writing, art, or simply by sharing your journey in a supportive environment.</p>
+
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128274;</div>
+                    <h3>Complete Privacy</h3>
+                    <p>Your privacy is our priority. Share as much or little as you feel comfortable with.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--Community Section-->
+    <section class="community" id="community">
+        <div class="container">
+            <h2>Our Supportive Community</h2>
+            <p>Thousands of members have found comfort, understanding, and friendship in our community. We come from different backgrounds but share the common goalof supporting each other through difficult times.</p>
+            <a href="#join" class="btn btn-secondary">Become Part Of Our community</a>
+        </div>
+
+    </section>
+    <!--Testimonials-->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stories of Hope and Healing</h2>
+                <p>Read how our community has made a difference in people's lives.</p>
+
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"After my trauma, I felt completely alone. This community helped me realise I wasn't the only one struggling. The support I've received has been incredible."</p>
+                    <p class="testimonial-author">- Blessings Yakoba, 19</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've struggled with anxiety for years and never had people who truly understood. Here I found friends who get it and don't judge me for my bad days."</p>
+                    <p class="testimonial-author">- Micheal, 17</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The loneliness was crushing until I found this community. Now I have people to talk to anytime I'm feeling low. It's made all the difference."</p>
+                    <p class="testimonial-author">- Jessica, 42</p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--resources section-->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Helpful Resources</h2>
+                <p>Additional support and information to help you on your healing journey.</p>
+
+
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">&#128218;</div>
+                    <h3>Educational Materials</h3>
+                    <p>Learn about mental health conditions and coping strategies.</p>
+
+                </div>
+                
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">&#127384;</div>
+                <h3>Crisis Resources</h3>
+                <p>Immediate help when you need it most.</p>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">&#127911;</div>
+                <h3>Guided Meditations</h3>
+                <p>Auto resources to help you calm your mind.</p>
+
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">&#128241;</div>
+                <h3>Mobile Apps</h3>
+                <p>Tools to support your mental wellness journey.</p>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--Join Section-->
+    <section class="join" id="join">
+        <div class="container">
+            <h2>Join Our Community Today</h2>
+            <p>Take the first step toward connection and healing. Our is free, safe, and waiting to welcomeyou. </p>
+            <div class="join-form">
+                <form>
+                    <div class="form-group">
+                        <label for="email">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="First name or nickname">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">What brings you here today?</label>
+                        <select  id="interest" class="form-control">
+                            <option value="">Select an option</option>
+                            <option value="depression">Depression</option>
+                            <option value="anxiety">Anxiety</option>
+                            <option value="loneliness">Loneliness</option>
+                            <option value="trauma">Trauma</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Join Now</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+    <section class="discord">
+        <div class="container" style="text-align: center;padding: 50px;">
+            <h2>Join our community chat</h2>
+            <p>Talk to others in real time. Share, support, and connect instantly with people who understand you.</p>
+            <a href="http://discord.gg/mNMQ4PCkw" target="_blank" class="btn">Join Our Discord</a>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TogetherWeHeal</h3>
+                    <p>A community dedicated to mental wellness and mutual support.</p>
+
+                </div>
+                <div class="footer-column">
+                    <h3>Quick links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#join">Join Us</a></li>
+
+                    </ul>
+
+                </div>
+                <div class="footer-column">
+                    <h3>Important Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Crisis Hotlines</a></li>
+                        <li><a href="#">Therapist Directory</a></li>
+                        <li><a href="#">Self-Care Tips</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+
+                    </ul>
+
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@togetherweheal.com">support@togetherweheal.com</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TogetherWeHeal. All rights reserved. This is a supportive community, not a substitute for professional medical advice.</p>
+
+            </div>
+
+        </div>
+    </footer>
+    <script>
+        // simple mobile menu toggle//
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        // smooth scrolling for anchor links//
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
